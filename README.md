@@ -77,16 +77,22 @@ This project consists of a backend API for securely executing Python code in a s
 
 ---
 
-## Example cURL Request
+## Example cURL Requests
 
-You can test the backend API using the following cURL command:
+### Simple Hello World
 
 ```bash
 curl -X POST https://python-execution-api-843742829651.us-central1.run.app/execute \
   -H "Content-Type: application/json" \
-  -d '{
-    "script": "import pandas as pd\\nimport numpy as np\\n\\ndef main():\\n    df = pd.DataFrame({\\n        \\"A\\": np.random.rand(5),\\n        \\"B\\": np.random.rand(5)\\n    })\\n    print(\\"Processing data...\\")\\n    return {\\n        \\"mean_A\\": df[\\"A\\"].mean(),\\n        \\"mean_B\\": df[\\"B\\"].mean(),\\n        \\"correlation\\": float(df[\\"A\\"].corr(df[\\"B\\"]))\\n    }"
-  }'
+  -d "{\"script\": \"def main():\\n    return {\\\"message\\\": \\\"Hello, World!\\\"}\"}"
+```
+
+### Using Pandas and NumPy
+
+```bash
+curl -X POST https://python-execution-api-843742829651.us-central1.run.app/execute \
+  -H "Content-Type: application/json" \
+  -d "{\"script\": \"import pandas as pd\\nimport numpy as np\\n\\ndef main():\\n    df = pd.DataFrame({\\\"A\\\": [1, 2, 3], \\\"B\\\": [4, 5, 6]})\\n    print(df)\\n    return {\\\"sum\\\": int(df.sum().sum())}\"}"
 ```
 
 ---

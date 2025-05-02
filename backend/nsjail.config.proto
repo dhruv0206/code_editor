@@ -1,0 +1,90 @@
+name: "python_sandbox"
+description: "Python script execution sandbox"
+
+mode: ONCE
+hostname: "sandbox"
+cwd: "/tmp"
+
+time_limit: 30
+rlimit_as: 1000
+rlimit_cpu: 10
+rlimit_fsize: 10
+rlimit_nofile: 64
+
+clone_newnet: true
+clone_newuser: true
+clone_newns: true
+clone_newpid: true
+clone_newipc: true
+clone_newuts: true
+clone_newcgroup: true
+
+mount {
+  src: "/usr"
+  dst: "/usr"
+  is_bind: true
+  rw: false
+}
+
+mount {
+  src: "/lib"
+  dst: "/lib"
+  is_bind: true
+  rw: false
+}
+
+mount {
+  src: "/lib64"
+  dst: "/lib64"
+  is_bind: true
+  rw: false
+}
+
+mount {
+  src: "/bin"
+  dst: "/bin"
+  is_bind: true
+  rw: false
+}
+
+mount {
+  src: "/tmp"
+  dst: "/tmp"
+  is_bind: true
+  rw: true
+}
+
+mount {
+  src: "/etc/passwd"
+  dst: "/etc/passwd"
+  is_bind: true
+  rw: false
+}
+
+mount {
+  src: "/dev/null"
+  dst: "/dev/null"
+  is_bind: true
+  rw: true
+}
+
+mount {
+  src: "/etc/ld.so.cache"
+  dst: "/etc/ld.so.cache"
+  is_bind: true
+  rw: false
+}
+
+seccomp_string: "ALLOW {"
+seccomp_string: "  read, write, close, brk, mmap, munmap, mprotect,"
+seccomp_string: "  lseek, newfstat, fstat, rt_sigaction, rt_sigprocmask,"
+seccomp_string: "  rt_sigreturn, pread64, geteuid, getpid, openat, futex,"
+seccomp_string: "  exit_group, exit, arch_prctl, sched_getaffinity,"
+seccomp_string: "  access, getrlimit, getdents64, fcntl"
+seccomp_string: "}"
+
+envar: "PYTHONPATH=."
+envar: "PATH=/usr/local/bin:/usr/bin:/bin"
+envar: "LANG=C.UTF-8"
+envar: "PYTHONDONTWRITEBYTECODE=1"
+envar: "PYTHONUNBUFFERED=1"

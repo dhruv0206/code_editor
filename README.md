@@ -52,7 +52,7 @@ This project consists of a backend API for securely executing Python code in a s
 ### Prerequisites
 
 - Docker
-- Node.js (for local frontend development)
+- React.js (for local frontend development)
 - Python 3.9+ (for local backend development)
 
 ---
@@ -60,11 +60,6 @@ This project consists of a backend API for securely executing Python code in a s
 ### Running Locally
 
 1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/your-username/your-repo.git
-   cd your-repo
-   ```
 
 2. Start the services using Docker Compose:
 
@@ -78,6 +73,8 @@ This project consists of a backend API for securely executing Python code in a s
 ---
 
 ## Example cURL Requests
+
+To try these examples, simply copy and paste them into your command prompt (CMD) or terminal.
 
 ### Simple Hello World
 

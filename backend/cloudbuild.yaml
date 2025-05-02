@@ -9,7 +9,7 @@ steps:
         "build",
         "-t",
         "gcr.io/$PROJECT_ID/python-execution-api:$COMMIT_SHA",
-        ".",
+        "./backend",
       ]
 
   # Push the container image to Container Registry

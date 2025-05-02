@@ -91,6 +91,12 @@ curl -X POST https://python-execution-api-843742829651.us-central1.run.app/execu
 curl -X POST https://python-execution-api-843742829651.us-central1.run.app/execute -H "Content-Type: application/json" -d "{\"script\": \"import pandas as pd\nimport numpy as np\n\ndef main():\n    df = pd.DataFrame({\\\"A\\\": [1, 2, 3], \\\"B\\\": [4, 5, 6]})\n    print(df)\n    return {\\\"sum\\\": int(df.sum().sum())}\"}"
 ```
 
+### Using Pandas and NumPy with Random Data
+
+```bash
+curl -X POST https://python-execution-api-843742829651.us-central1.run.app/execute -H "Content-Type: application/json" -d "{\"script\": \"import pandas as pd\nimport numpy as np\n\ndef main():\n    # Create a sample DataFrame\n    df = pd.DataFrame({\n        \\\"A\\\": np.random.rand(5),\n        \\\"B\\\": np.random.rand(5)\n    })\n    \n    print(\\\"DataFrame created successfully\\\")\n    print(df.head())\n    \n    return {\n        \\\"mean_A\\\": float(df[\\\"A\\\"].mean()),\n        \\\"mean_B\\\": float(df[\\\"B\\\"].mean())\n    }\"}"
+```
+
 ---
 
 ## Deployment

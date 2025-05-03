@@ -1,5 +1,12 @@
 # Python Code Execution API with React Frontend
 
+## Live URLs
+
+- **Frontend**: [https://frontend-execution-api-843742829651.us-central1.run.app/](https://frontend-execution-api-843742829651.us-central1.run.app/)
+- **Backend API**: [https://python-execution-api-843742829651.us-central1.run.app/](https://python-execution-api-843742829651.us-central1.run.app/)
+- **Execute API Endpoint**: [https://python-execution-api-843742829651.us-central1.run.app/execute](https://python-execution-api-843742829651.us-central1.run.app/execute)
+
+
 This project consists of a backend API for securely executing Python code in a sandboxed environment and a React-based frontend for interacting with the API.
 
 ## Features

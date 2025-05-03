@@ -94,6 +94,16 @@ curl -X POST https://python-execution-api-843742829651.us-central1.run.app/execu
 curl -X POST https://python-execution-api-843742829651.us-central1.run.app/execute -H "Content-Type: application/json" -d "{\"script\": \"import pandas as pd\nimport numpy as np\n\ndef main():\n    # Create a sample DataFrame\n    df = pd.DataFrame({\n        \\\"A\\\": np.random.rand(5),\n        \\\"B\\\": np.random.rand(5)\n    })\n    \n    print(\\\"DataFrame created successfully\\\")\n    print(df.head())\n    \n    return {\n        \\\"mean_A\\\": float(df[\\\"A\\\"].mean()),\n        \\\"mean_B\\\": float(df[\\\"B\\\"].mean())\n    }\"}"
 ```
 
+### Error Example: Missing `main` Function
+```bash
+curl -X POST https://python-execution-api-843742829651.us-central1.run.app/execute -H "Content-Type: application/json" -d "{\"script\": \"def not_main():\\n    return {\\\"message\\\": \\\"This will fail because there is no main function\\\"}\\n\\nprint('This script has no main function')\"}"
+```
+
+### Error Example: Not returning 'JSON' Object
+```bash
+curl -X POST https://python-execution-api-843742829651.us-central1.run.app/execute -H "Content-Type: application/json" -d "{\"script\": \"def main():\n    class NonSerializable:\n        def __str__(self):\n            return 'This is a string representation'\n    return str(NonSerializable())\"}"
+```
+
 ---
 
 ## Deployment

@@ -96,7 +96,7 @@ curl -X POST https://python-execution-api-843742829651.us-central1.run.app/execu
 
 ### Error Example: Missing `main` Function
 ```bash
-curl -X POST https://python-execution-api-843742829651.us-central1.run.app/execute -H "Content-Type: application/json" -d "{\"script\": \"def not_main():\\n    return {\\\"message\\\": \\\"This will fail because there is no main function\\\"}\\n\\nprint('This script has no main function')\"}"
+curl -X POST https://python-execution-api-843742829651.us-central1.run.app/execute -H "Content-Type: application/json" -d "{\"script\": \"print('Hello, World!')\"}"
 ```
 
 ### Error Example: Not returning `JSON` Object

@@ -16,7 +16,7 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args: ["push", "gcr.io/$PROJECT_ID/python-execution-api:$COMMIT_SHA"]
 
-  # Deploy container image to Cloud Run
+  # Deploy container image to Cloud Run with Generation 2 execution environment
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
     entrypoint: gcloud
     args:
@@ -31,11 +31,18 @@ steps:
       - "managed"
       - "--allow-unauthenticated"
       - "--memory"
-      - "512Mi"
+      - "2Gi"
       - "--cpu"
-      - "1"
+      - "2"
       - "--timeout"
-      - "60s"
+      - "300s"
+      - "--execution-environment"
+      - "gen2"
+      - "--cpu-boost"
+      - "--max-instances"
+      - "10"
+      - "--concurrency"
+      - "1"
 
 images:
   - "gcr.io/$PROJECT_ID/python-execution-api:$COMMIT_SHA"
